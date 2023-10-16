@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { FaShoppingBag, FaSearch } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 const Header = () => {
+  const { logOut, user } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .then((error) => console.log(error));
+  };
   const navItems = (
     <>
       <li>
@@ -23,12 +31,16 @@ const Header = () => {
       <li>
         <Link to="/about">Contact</Link>
       </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-      <li>
-        <Link to="/signup">Sign Up</Link>
-      </li>
+      {user ? (
+        <li onClick={handleLogOut}>
+          <Link>Log Out</Link>
+        </li>
+      ) : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
+      {/* <li><Link to="/signup">Sign Up</Link> */}
     </>
   );
   return (
