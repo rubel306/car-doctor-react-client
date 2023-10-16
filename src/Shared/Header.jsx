@@ -21,8 +21,13 @@ const Header = () => {
         <Link to="/blog">Blog</Link>{" "}
       </li>
       <li>
-        {" "}
-        <Link to="/about">Contact</Link>{" "}
+        <Link to="/about">Contact</Link>
+      </li>
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
+      <li>
+        <Link to="/signup">Sign Up</Link>
       </li>
     </>
   );

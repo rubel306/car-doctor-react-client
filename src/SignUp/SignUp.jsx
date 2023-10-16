@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import img from "../assets/images/login/login.svg";
-const Login = () => {
-  const handleLogin = (e) => {
+const SignUp = () => {
+  const handleSignUp = (e) => {
     e.preventDefault();
     console.log("Form submitted ");
   };
@@ -12,8 +12,20 @@ const Login = () => {
           <img src={img} alt="" />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleLogin} className="card-body">
-            <h1 className="text-3xl font-bold">Login</h1>
+          <form onSubmit={handleSignUp} className="card-body">
+            <h1 className="text-3xl font-bold">Sign Up</h1>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                name="name"
+                type="text"
+                placeholder="name"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -37,20 +49,19 @@ const Login = () => {
                 className="input input-bordered"
                 required
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
             </div>
             <div className="form-control mt-6">
-              <input type="submit" className="btn btn-warning" value="Login" />
+              <input
+                type="submit"
+                className="btn btn-warning"
+                value="Sign Up"
+              />
             </div>
           </form>
           <p className="text-center pb-5">
-            New to Car Doctor? Please{" "}
-            <Link className="text-orange-500 text-bold" to={"/signup"}>
-              Sing Up
+            Already Have an Account? Please{" "}
+            <Link className="text-orange-500 text-bold" to={"/login"}>
+              Login
             </Link>
           </p>
         </div>
@@ -59,4 +70,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
