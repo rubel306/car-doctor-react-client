@@ -32,9 +32,14 @@ const Header = () => {
         <Link to="/about">Contact</Link>
       </li>
       {user ? (
-        <li onClick={handleLogOut}>
-          <Link>Log Out</Link>
-        </li>
+        <>
+          <li>
+            <Link to="/bookings">My Bookings</Link>
+          </li>
+          <li onClick={handleLogOut}>
+            <Link>Log Out</Link>
+          </li>
+        </>
       ) : (
         <li>
           <Link to="/login">Login</Link>

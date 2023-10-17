@@ -13,15 +13,16 @@ const CheckOut = () => {
     const name = form.name.value;
     const email = user?.email;
     const date = form.date.value;
-    const service = form.title.value;
+    const title = form.title.value;
     const price = form.price.value;
     const booking = {
       name,
       email,
       price,
-      service,
+      title,
       price,
       date,
+      img,
     };
     console.log(booking);
 
