@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../assets/images/login/login.svg";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+
 const Login = () => {
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+  const { logIn } = useContext(AuthContext);
   const handleLogin = (e) => {
-    const { logIn } = useContext(AuthContext);
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -15,6 +19,24 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log("logged use: ", loggedUser);
+
+        //jwt
+        const userEmail = {
+          email: loggedUser.email,
+        };
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userEmail),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("Jwt res", data);
+            localStorage.setItem("car-token", data.token);
+            // navigate(from, { replace: true });
+          });
       })
       .then((error) => console.log(error));
     console.log("Form submitted ");

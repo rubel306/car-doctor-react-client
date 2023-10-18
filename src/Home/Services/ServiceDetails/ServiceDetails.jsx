@@ -31,7 +31,7 @@ const ServiceDetails = () => {
           <div className="grid grid-cols-2 gap-5 py-5">
             {facility.map((fac) => (
               <div
-                key={_id}
+                key={Math.random()}
                 className="p-7 bg-slate-100 rounded-lg mb-6  border-t-4 border-t-orange-500"
               >
                 <h3 className="text-xl font-semibold text-black">{fac.name}</h3>
