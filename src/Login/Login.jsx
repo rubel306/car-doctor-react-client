@@ -35,7 +35,7 @@ const Login = () => {
           .then((data) => {
             console.log("Jwt res", data);
             localStorage.setItem("car-token", data.token);
-            // navigate(from, { replace: true });
+            navigate(from, { replace: true });
           });
       })
       .then((error) => console.log(error));
