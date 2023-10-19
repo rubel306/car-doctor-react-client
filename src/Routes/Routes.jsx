@@ -33,13 +33,17 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://car-doctor-mondgodb-server.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "checkout/:id",
         element: <CheckOut></CheckOut>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/checkout/${params.id}`),
+          fetch(
+            `https://car-doctor-mondgodb-server.vercel.app/checkout/${params.id}`
+          ),
       },
       {
         path: "bookings",
