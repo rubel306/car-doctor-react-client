@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../assets/images/login/login.svg";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const location = useLocation();
@@ -19,24 +20,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log("logged use: ", loggedUser);
-
-        //jwt
-        const userEmail = {
-          email: loggedUser.email,
-        };
-        fetch("http://localhost:5000/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(userEmail),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log("Jwt res", data);
-            localStorage.setItem("car-token", data.token);
-            navigate(from, { replace: true });
-          });
+        navigate(from, { replace: true });
       })
       .then((error) => console.log(error));
     console.log("Form submitted ");
@@ -89,6 +73,7 @@ const Login = () => {
               Sing Up
             </Link>
           </p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
